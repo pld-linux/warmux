@@ -11,7 +11,7 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.haypocalc.com/wormux/en/index.php
 BuildRequires:	ClanLib-devel >= 0.6.0
-BuildRequires:	libxml1++-devel
+BuildRequires:	libxml++1-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
