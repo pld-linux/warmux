@@ -11,7 +11,8 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.haypocalc.com/wormux/en/index.php
 BuildRequires:	ClanLib-devel >= 0.6.0
-BuildRequires:	libxml++1-devel
+BuildRequires:	libxml++-devel >= 2.6.0
+BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,10 +24,13 @@ Wolnodostêpny klon gry Worms z Team17.
 %prep
 %setup -q -n %{name}
 
-%build
+%{__perl} -pi -e 's/libxml\+\+-1\.0/libxml++-2.6/' src/Makefile src/make.env
+%{__perl} -pi -e 's/-O3/%{rpmcflags}/' src/make.env
 
-%{__make} -C src exec \
-	RELEASE=1
+%build
+%{__make} -C src \
+	RELEASE=1 \
+	CXX="%{__cxx}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,9 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS.txt CHANGELOG.txt BUGS.txt TODO.txt README.txt FAQ.txt HACKERS.txt doc
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/*
-%doc AUTHORS.txt CHANGELOG.txt BUGS.txt TODO.txt README.txt FAQ.txt HACKERS.txt
-%doc doc
+%{_pixmapsdir}/*.png
