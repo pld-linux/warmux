@@ -26,12 +26,18 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/games/%{name},%{_desktopdir},%{_pixmapsdir}}
 
-%{__make} -C src config_install install \
-	DIR=$RPM_BUILD_ROOT \
+%{__make} -C src config_install \
+	DIR=$RPM_BUILD_ROOT
+
+mv src/constante.cpp src/constante.old
+sed -e "s!REPERTOIRE_INSTALL(.*)!REPERTOIRE_INSTALL(\"/usr/\")!" \
+	src/constante.old > src/constante.cpp
+
+%{__make} -C src install \
 	DIR_BIN=$RPM_BUILD_ROOT%{_bindir} \
-	DIR_SHARE=$RPM_BUILD_ROOT%{_datadir}/%{name}/	# Makefile needs trailing slash (maybe patch will be better?)
+	DIR_SHARE=$RPM_BUILD_ROOT%{_datadir}/games/%{name}/	# Makefile needs trailing slash (maybe patch will be better?)
 
 #install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 #install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -42,6 +48,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/wormux
-%{_datadir}/%{name}
+%{_datadir}/games/%{name}
 #%%{_desktopdir}/%{name}.desktop
 #%%{_pixmapsdir}/*
