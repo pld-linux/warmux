@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=wormux
 Comment=A free (libre) clone of Worms from Team17
-Comment[pl]=Wolnodostępny klon Worms zTeam17
+Comment[pl]=Wolnodostępny klon Worms z Team17
 Exec=wormux
 Icon=wormux.png
 Terminal=false
