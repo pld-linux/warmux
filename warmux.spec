@@ -2,7 +2,7 @@ Summary:	A free (libre) clone of Worms from Team17
 Summary(pl):	Wolnodostêpny klon Worms z Team17
 Name:		wormux
 Version:	0.2.3
-Release:	2
+Release:	3
 License:	BSD
 Group:		Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-src-%{version}.tgz
@@ -54,3 +54,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/*
+%doc AUTHORS.txt CHANGELOG.txt BUGS.txt TODO.txt README.txt
+%doc doc
