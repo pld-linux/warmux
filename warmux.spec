@@ -26,10 +26,12 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_desktopdir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_desktopdir}}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C src config_install install \
+	DIR=$RPM_BUILD_ROOT \
+	DIR_BIN=$RPM_BUILD_ROOT%{_bindir} \
+	DIR_SHARE=$RPM_BUILD_ROOT%{_datadir}/%{name}/	# Makefile needs trailing slash (maybe patch will be better?)
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
