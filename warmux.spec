@@ -35,7 +35,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/games/%{name},%{_desktopdir},%
 
 # Here patch is useless
 mv src/constante.cpp src/constante.old
-sed -e "s!REPERTOIRE_INSTALL(.*)!REPERTOIRE_INSTALL(\"/usr/\")!" \
+sed -e "s!REPERTOIRE_INSTALL(.*)!REPERTOIRE_INSTALL(\"%{_usr}/\")!" \
 	src/constante.old > src/constante.cpp
 
 %{__make} -C src install \
