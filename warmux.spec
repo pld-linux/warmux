@@ -33,8 +33,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_desktopdir},%{_pixm
 	DIR_BIN=$RPM_BUILD_ROOT%{_bindir} \
 	DIR_SHARE=$RPM_BUILD_ROOT%{_datadir}/%{name}/	# Makefile needs trailing slash (maybe patch will be better?)
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+#install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+#install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -43,5 +43,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/%{name}
-%{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/*
+#%%{_desktopdir}/%{name}.desktop
+#%%{_pixmapsdir}/*
