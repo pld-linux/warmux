@@ -40,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/games/%{name},%{_desktopdir},%{_pixmapsdir},%{_datadir}/locale}
 
 %{__make} -C src install \
-	DIR_SHARE_PLD=%{_datadir}/games/%name/ \
+	DIR_SHARE_PLD=%{_datadir}/games/%{name}/ \
 	DIR_BIN=$RPM_BUILD_ROOT%{_bindir} \
 	DIR_SHARE=$RPM_BUILD_ROOT%{_datadir}/games/%{name}/	# Makefile needs trailing slash (maybe patch will be better?)
 
