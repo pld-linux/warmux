@@ -1,4 +1,5 @@
 Summary:	A free (libre) clone of Worms from Team17
+Summary(pl):	Wolnodostêpny klon Worms z Team17
 Name:		wormux
 Version:	0.2.3
 Release:	1
@@ -13,12 +14,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 A free (libre) clone of Worms from Team17.
 
+%description -l pl
+Wolnodostêpny klon gry Worms z Team17.
+
 %prep
 %setup -q -n %{name}
 
 %build
-cd src
-%{__make} exec \
+%{__make} -C src exec \
 	RELEASE=1
 
 %install
