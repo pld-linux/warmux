@@ -1,16 +1,17 @@
 Summary:	A free (libre) clone of Worms from Team17
 Summary(pl):	Wolnodostêpny klon Worms z Team17
 Name:		wormux
-Version:	0.2.3
-Release:	3
+Version:	0.3.1
+Release:	1
 License:	BSD
 Group:		Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-src-%{version}.tgz
-# Source0-md5:	a4634a2c85b306acb7e131dba8553589
+# Source0-md5:	b65aef5d76192cac4c61f8dfc1f98a28
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.haypocalc.com/wormux/en/index.php
 BuildRequires:	ClanLib-devel >= 0.6.0
+BuildRequires:	libxml++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,6 +24,7 @@ Wolnodostêpny klon gry Worms z Team17.
 %setup -q -n %{name}
 
 %build
+
 %{__make} -C src exec \
 	RELEASE=1
 
@@ -31,12 +33,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/games/%{name},%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} -C src config_install \
-	DIR=$RPM_BUILD_ROOT
-
-# Here patch is useless
-mv src/constante.cpp src/constante.old
-sed -e "s!REPERTOIRE_INSTALL(.*)!REPERTOIRE_INSTALL(\"%{_usr}/\")!" \
-	src/constante.old > src/constante.cpp
+	DIR=$RPM_BUILD_ROOT \
+	DIR_OK=%{_usr}/
 
 %{__make} -C src install \
 	DIR_BIN=$RPM_BUILD_ROOT%{_bindir} \
@@ -54,5 +52,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/*
-%doc AUTHORS.txt CHANGELOG.txt BUGS.txt TODO.txt README.txt
+%doc AUTHORS.txt CHANGELOG.txt BUGS.txt TODO.txt README.txt FAQ.txt HACKERS.txt
 %doc doc
