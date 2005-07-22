@@ -9,7 +9,7 @@ Source0:	http://download.gna.org/wormux/%{name}-src-%{version}.tar.bz2
 # Source0-md5:	68eae1190569c155995e29aa8a97f710
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-URL:		http://www.haypocalc.com/wormux/en/index.php
+URL:		http://www.wormux.org/en/index.php
 BuildRequires:	ClanLib-OpenGL-devel >= 0.7.0
 BuildRequires:	ClanLib-Vorbis-devel >= 0.7.0
 BuildRequires:	autoconf
