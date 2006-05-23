@@ -2,20 +2,20 @@ Summary:	A free (libre) clone of Worms from Team17
 Summary(de):	Ein kostenloser Team17 Worms-Klon
 Summary(pl):	Wolnodostêpny klon Worms z Team17
 Name:		wormux
-Version:	0.7
+Version:	0.7.1
 Release:	1
-License:	BSD
+License:	GPL v2
 Group:		Applications/Games
 Source0:	http://download.gna.org/wormux/wormux-%{version}.tar.gz
-# Source0-md5:	4e7178aa8765424577ec185ee841665f
+# Source0-md5:	0e50fbdb63424e71ce19c0c48106793e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-gcc4.patch
 URL:		http://www.wormux.org/en/index.php
 BuildRequires:	SDL-devel >= 1.2.6
 BuildRequires:	SDL_gfx-devel >= 2.0.13
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
+BuildRequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,7 +36,6 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # let *.mo build
 rm -f po/stamp-po
@@ -68,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS README
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
