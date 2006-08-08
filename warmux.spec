@@ -36,16 +36,17 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %prep
 %setup -q
+%{__sed} -i -e s/tr//g po/LINGUAS
 
 # let *.mo build
 rm -f po/stamp-po
 
 %build
-%{__gettextize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
+#%{__gettextize}
+#%{__aclocal} -I m4
+#%{__autoconf}
+#%{__autoheader}
+#%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
@@ -67,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
