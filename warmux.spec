@@ -36,17 +36,11 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %prep
 %setup -q
-#%{__sed} -i -e s/tr//g po/LINGUAS
 
 # let *.mo build
 rm -f po/stamp-po
 
 %build
-#%{__gettextize}
-#%{__aclocal} -I m4
-#%{__autoconf}
-#%{__autoheader}
-#%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
