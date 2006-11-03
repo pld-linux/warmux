@@ -1,0 +1,11 @@
+--- src/tool/vector2.h	2006-10-21 21:50:09.000000000 +0200
++++ src/tool/vector2.h-new	2006-11-03 15:34:25.908658328 +0100
+@@ -10,7 +10,7 @@
+ template<class T> class Vector2
+ {
+ 	private:
+-		const static double EPS_ZERO = 0.05;
++		static const double EPS_ZERO = 0.05;
+ 
+ 	public:
+ 		T x, y;
