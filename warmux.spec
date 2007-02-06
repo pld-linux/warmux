@@ -3,12 +3,11 @@ Summary(de):	Ein kostenloser Team17 Worms-Klon
 Summary(pl):	Wolnodostêpny klon Worms z Team17
 Name:		wormux
 Version:	0.7.9
-%define		_rel	rc1
-Release:	0.%{_rel}.1
-License:	GPL v2
+Release:	1
+License:	GPL v2+
 Group:		Applications/Games
-Source0:	http://download.gna.org/wormux/wormux-%{version}%{_rel}.tar.bz2
-# Source0-md5:	53670b1bd79d7c26a849cf586718ae1b
+Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.gz
+# Source0-md5:	d921ae5bad243dec7bb6825d6e0b9d16
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.wormux.org/en/index.php
@@ -36,12 +35,16 @@ Ein kostenloser Team17 Worms-Klon.
 Wolnodostêpny klon gry Worms z Team17.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rel}
+%setup -q
 
 # let *.mo build
 rm -f po/stamp-po
 
 %build
+#%%{__aclocal}  
+#%%{__autoconf}
+#%%{__autoheader}
+#%%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
@@ -63,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog
+%doc AUTHORS ChangeLog README 
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
