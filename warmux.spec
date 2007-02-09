@@ -1,3 +1,7 @@
+# TODO:
+# - use desktop file included in source ( %{_datadir}/games/wormux/wormux.desktop )
+# - use new icon from %{_datadir}/games/wormux/ instead of outdated Source2 
+#
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de):	Ein kostenloser Team17 Worms-Klon
 Summary(pl):	Wolnodostêpny klon Worms z Team17
@@ -20,6 +24,7 @@ BuildRequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
@@ -60,6 +65,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+mv -f $RPM_BUILD_ROOT%{_datadir}/locale/pt{-BR,_BR}
 
 %find_lang %{name}
 
