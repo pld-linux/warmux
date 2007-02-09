@@ -10,6 +10,7 @@ Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.gz
 # Source0-md5:	d921ae5bad243dec7bb6825d6e0b9d16
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		%{name}-disable-werror.patch
 URL:		http://www.wormux.org/en/index.php
 BuildRequires:	SDL-devel >= 1.2.6
 BuildRequires:	SDL_gfx-devel >= 2.0.13
@@ -36,11 +37,16 @@ Wolnodostêpny klon gry Worms z Team17.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # let *.mo build
 rm -f po/stamp-po
 
 %build
+touch config.rpath
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
@@ -67,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/*.png
-%{_mandir}/man6/wormux.*
+%{_mandir}/man6/wormux.6*
