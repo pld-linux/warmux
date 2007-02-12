@@ -1,6 +1,6 @@
 Summary:	A free (libre) clone of Worms from Team17
-Summary(de):	Ein kostenloser Team17 Worms-Klon
-Summary(pl):	Wolnodostêpny klon Worms z Team17
+Summary(de.UTF-8):   Ein kostenloser Team17 Worms-Klon
+Summary(pl.UTF-8):   WolnodostÄ™pny klon Worms z Team17
 Name:		wormux
 Version:	0.7.9
 Release:	1
@@ -29,11 +29,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 A free (libre) clone of Worms from Team17.
 
-%description -l de
+%description -l de.UTF-8
 Ein kostenloser Team17 Worms-Klon.
 
-%description -l pl
-Wolnodostêpny klon gry Worms z Team17.
+%description -l pl.UTF-8
+WolnodostÄ™pny klon gry Worms z Team17.
 
 %prep
 %setup -q
