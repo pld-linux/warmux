@@ -5,7 +5,7 @@
  Encoding=UTF-8
  Type=Application
 -Icon=wormux_128x128.png
-+Icon=wormux.xpm
++Icon=wormux
  Exec=wormux
  Terminal=false
  StartupNotify=false
@@ -22,5 +22,5 @@
 +Comment[ro]=Un joc în 2D în care personaje amuzante lansează arme amuzante
  
 -Categories=Application;Game;ArcadeGame
-+Categories=Game;ArcadeGame
++Categories=Game;ArcadeGame;
 +# vi: encoding=utf-8
