@@ -1,13 +1,14 @@
+%define		_beta beta2
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
-Version:	0.7.9
-Release:	2
+Version:	0.8
+Release:	0.%{_beta}.0
 License:	GPL v2+
 Group:		Applications/Games
-Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.gz
-# Source0-md5:	d921ae5bad243dec7bb6825d6e0b9d16
+Source0:	http://download.gna.org/wormux/%{name}-%{version}%{_beta}.tar.bz2
+# Source0-md5:	824c747a0c58564ab7eec2ec51c891ba
 Patch0:		%{name}-disable-werror.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
@@ -21,6 +22,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libssh2-devel
 BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -36,7 +39,7 @@ Ein kostenloser Team17 Worms-Klon.
 Wolnodostępny klon gry Worms z Team17.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_beta}
 %patch0 -p1
 %patch1 -p1
 
@@ -61,8 +64,6 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 install data/wormux.desktop $RPM_BUILD_ROOT%{_desktopdir}
 install data/wormux_32x32.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
-
-mv -f $RPM_BUILD_ROOT%{_datadir}/locale/pt{-BR,_BR}
 
 %find_lang %{name}
 
