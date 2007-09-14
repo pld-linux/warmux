@@ -44,9 +44,6 @@ Wolnodostępny klon gry Worms z Team17.
 %patch0 -p1
 %patch1 -p1
 
-# let *.mo build
-rm -f po/stamp-po
-
 # disable building unsupported locale
 sed -i -e 's|cpf||g' po/LINGUAS
 
