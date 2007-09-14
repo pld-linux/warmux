@@ -27,6 +27,7 @@ BuildRequires:	libssh2-devel
 BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
