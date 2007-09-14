@@ -51,7 +51,6 @@ rm -f po/stamp-po
 sed -i -e 's|cpf||g' po/LINGUAS
 
 %build
-touch config.rpath
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
