@@ -1,4 +1,4 @@
-%define		_beta beta2
+%define		_beta beta3
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
@@ -8,7 +8,7 @@ Release:	0.%{_beta}.1
 License:	GPL v2+
 Group:		Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-%{version}%{_beta}.tar.bz2
-# Source0-md5:	824c747a0c58564ab7eec2ec51c891ba
+# Source0-md5:	fb4611106f294d48eaf35466abe99f49
 Patch0:		%{name}-disable-werror.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
@@ -56,13 +56,12 @@ sed -i -e 's|cpf||g' po/LINGUAS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install data/wormux.desktop $RPM_BUILD_ROOT%{_desktopdir}
-install data/wormux_32x32.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
+# rename pixmap
+mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}_128x128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %find_lang %{name}
 
@@ -75,5 +74,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/%{name}.xpm
+%{_pixmapsdir}/%{name}.png
 %{_mandir}/man6/wormux.6*
