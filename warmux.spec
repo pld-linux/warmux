@@ -1,14 +1,13 @@
-%define		_beta beta4
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
 Version:	0.8
-Release:	0.%{_beta}.1
+Release:	0.1
 License:	GPL v2+
 Group:		Applications/Games
-Source0:	http://download.gna.org/wormux/%{name}-%{version}%{_beta}.tar.bz2
-# Source0-md5:	1717a31ef6d8499c101a57734614460b
+Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
+# Source0-md5:	79400ddcb2e9fdfcd4145c62940a24d3
 Patch0:		%{name}-disable-werror.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
@@ -39,7 +38,7 @@ Ein kostenloser Team17 Worms-Klon.
 Wolnodostępny klon gry Worms z Team17.
 
 %prep
-%setup -q -n %{name}-%{version}%{_beta}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
