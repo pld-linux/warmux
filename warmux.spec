@@ -2,12 +2,12 @@ Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
-Version:	0.7.9
-Release:	2
+Version:	0.8
+Release:	1
 License:	GPL v2+
 Group:		Applications/Games
-Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.gz
-# Source0-md5:	d921ae5bad243dec7bb6825d6e0b9d16
+Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
+# Source0-md5:	79400ddcb2e9fdfcd4145c62940a24d3
 Patch0:		%{name}-disable-werror.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
@@ -19,11 +19,13 @@ BuildRequires:	SDL_net-devel
 BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	curl-devel
+BuildRequires:	curl-devel >= 7.16.4-2
 BuildRequires:	gettext-devel
+BuildRequires:	libpng-devel
 BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,11 +42,10 @@ Wolnodostępny klon gry Worms z Team17.
 %patch0 -p1
 %patch1 -p1
 
-# let *.mo build
-rm -f po/stamp-po
+# disable building unsupported locale
+sed -i -e 's|cpf||g' po/LINGUAS
 
 %build
-touch config.rpath
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
@@ -54,15 +55,12 @@ touch config.rpath
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install data/wormux.desktop $RPM_BUILD_ROOT%{_desktopdir}
-install data/wormux_32x32.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
-
-mv -f $RPM_BUILD_ROOT%{_datadir}/locale/pt{-BR,_BR}
+# rename pixmap
+mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}_128x128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 %find_lang %{name}
 
@@ -75,5 +73,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/wormux
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/%{name}.xpm
+%{_pixmapsdir}/%{name}.png
 %{_mandir}/man6/wormux.6*
