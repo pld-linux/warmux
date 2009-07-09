@@ -1,13 +1,16 @@
+#
+# TODO: fix build with autotools
+#
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
-Version:	0.8.3
+Version:	0.8.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
-# Source0-md5:	c4235a844ad9f7337f1a8da2c5c1b820
+# Source0-md5:	0aed316799723173f2d6e242af312382
 Patch0:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
 BuildRequires:	SDL-devel >= 1.2.6
@@ -41,12 +44,12 @@ Wolnodostępny klon gry Worms z Team17.
 %patch0 -p1
 
 # disable building unsupported locale
-sed -i -e 's|cpf||g' po/LINGUAS
+%{__sed} -i -e 's|cpf||g' po/LINGUAS
 
 %build
-%{__aclocal} -I m4
-%{__autoconf}
-%{__automake}
+#%%{__aclocal}
+#%%{__autoconf}
+#%%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
