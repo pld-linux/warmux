@@ -47,9 +47,9 @@ Wolnodostępny klon gry Worms z Team17.
 %{__sed} -i -e 's|cpf||g' po/LINGUAS
 
 %build
-#%%{__aclocal}
-#%%{__autoconf}
-#%%{__automake}
+%{__aclocal} -I build/m4
+%{__autoconf}
+%{__automake}
 %configure \
 	--with-datadir-name=%{_datadir}/games/%{name} 
 %{__make}
