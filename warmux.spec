@@ -1,13 +1,16 @@
+%define		_maps_ver	20100107
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
 Version:	0.9.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
 # Source0-md5:	001b4979c53ffcf4c45715cad4f8bc85
+Source1:	http://download.gna.org/wormux/Wormux-BonusMaps-%{_maps_ver}.tar.gz
+# Source1-md5:	282bb00629ddcae910ac43b0ab5fe85d
 Patch0:		%{name}-desktop.patch
 URL:		http://www.wormux.org/en/index.php
 BuildRequires:	SDL-devel >= 1.2.6
@@ -47,6 +50,10 @@ Wolnodostępny klon gry Worms z Team17.
 %{__sed} -i -e 's/ja_JP/ja/g' po/LINGUAS
 mv -f po/ja{_JP,}.po
 
+mkdir maps && cd maps
+%{__tar} xf %{SOURCE1}
+cd ..
+
 %build
 %{__aclocal} -I build/m4
 %{__autoconf}
@@ -60,6 +67,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp -r maps/* $RPM_BUILD_ROOT%{_datadir}/games/%{name}/map
 
 # rename pixmap
 mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}_128x128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
