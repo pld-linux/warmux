@@ -3,12 +3,12 @@ Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
-# Source0-md5:	97b039570f345aff84ac07718f57e44a
+# Source0-md5:	2f4bee4b11091da81af4338c1fcce211
 Source1:	http://download.gna.org/wormux/Wormux-BonusMaps-%{_maps_ver}.tar.gz
 # Source1-md5:	58fd6b93fb848315affe1145b2729a62
 Patch0:		%{name}-desktop.patch
@@ -82,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/wormux
+%attr(755,root,root) %{_bindir}/wormux-list-games
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.png
