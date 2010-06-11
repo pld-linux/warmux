@@ -1,10 +1,18 @@
+#
+# NOTE:	Bonus maps pack is disabled by default, because player
+#	can't play via network with other players which don't
+#	have additional maps.
+#
+# Conditional build
+%bcond_with	maps	# without additional maps subpackage
+#
 %define		_maps_ver	20100221
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		wormux
 Version:	0.9.2.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
@@ -50,9 +58,11 @@ Wolnodostępny klon gry Worms z Team17.
 %{__sed} -i -e 's/ja_JP/ja/g' po/LINGUAS
 mv -f po/ja{_JP,}.po
 
+%if %{with maps}
 mkdir maps && cd maps
 %{__tar} xf %{SOURCE1}
 cd ..
+%endif
 
 %build
 %{__aclocal} -I build/m4
@@ -68,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -r maps/* $RPM_BUILD_ROOT%{_datadir}/games/%{name}/map
+%{?with_maps:cp -r maps/* $RPM_BUILD_ROOT%{_datadir}/games/%{name}/map}
 
 # rename pixmap
 mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}_128x128.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
