@@ -1,4 +1,6 @@
 #
+# TODO: move additional maps to separate subpackage
+#
 # NOTE:	Bonus maps pack is disabled by default, because player
 #	can't play via network with other players which don't
 #	have additional maps.
