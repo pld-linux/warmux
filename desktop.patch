@@ -1,20 +1,25 @@
---- wormux-0.8beta3/data/wormux.desktop	2007-11-11 00:40:53.000000000 +0000
-+++ wormux-0.8beta3/data/wormux.desktop	2007-11-29 11:45:24.000000000 +0000
-@@ -2,7 +2,7 @@
- Version=1.0
+--- warmux-11.01/data/warmux.desktop~	2011-01-20 18:12:15.000000000 +0100
++++ warmux-11.01/data/warmux.desktop	2011-02-15 11:38:42.795203149 +0100
+@@ -1,9 +1,8 @@
+ [Desktop Entry]
+-Version=1.0
  Encoding=UTF-8
+ Name=Warmux
  Type=Application
--Icon=wormux_128x128.png
-+Icon=wormux
- Exec=wormux
+-Icon=warmux_128x128.png
++Icon=warmux
+ Exec=warmux
  Terminal=false
  StartupNotify=false
-@@ -13,7 +13,7 @@
+@@ -12,9 +11,9 @@
  Comment=A 2D game where funny characters launch funny weapons
  Comment[de]=Ein 2D Spiel mit lustigen Figuren und Waffen
  Comment[es]=Un juego en 2D donde extraños personajes se destripan con alegría
 -Comment[fr_FR]=Un jeu en 2D où de drôles de personnages s'étripent joyeusement
 +Comment[fr]=Un jeu en 2D où de drôles de personnages s'étripent joyeusement
  Comment[it]=Un gioco in 2D dove dei simpatici personaggi si sparano allegramente
- Comment[pl]=Gra 2D, w której zabawne postacie używają zabawnego uzbojenia
+-Comment[pl]=Gra 2D, w której zabawne postacie używają zabawnego uzbojenia
++Comment[pl]=Gra 2D, w której zabawne postacie używają zabawnego uzbrojenia
  Comment[ro]=Un joc în 2D în care personaje amuzante lansează arme amuzante
+ Categories=Game;ArcadeGame;
+ GenericName[fr_FR]=Arcade Game
