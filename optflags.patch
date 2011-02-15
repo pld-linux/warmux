@@ -1,0 +1,12 @@
+--- warmux-11.01/configure.ac~	2011-01-21 15:41:40.000000000 +0100
++++ warmux-11.01/configure.ac	2011-02-15 11:45:45.097470453 +0100
+@@ -357,6 +357,9 @@
+ dnl === Forbid exceptions (Android platform requirement) ===================
+ CXXFLAGS="$CXXFLAGS -fno-exceptions"
+ 
++dnl === Append PLD's CXXFLAGS ==============================================
++CXXFLAGS="$CXXFLAGS $OPTFLAGS"
++
+ dnl ========================================================================
+ dnl == Check for header files                                              =
+ dnl ========================================================================
