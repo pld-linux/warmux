@@ -1,14 +1,15 @@
 Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
-Name:		wormux
-Version:	0.9.2.1
-Release:	3
+Name:		warmux
+Version:	11.01
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
-Source0:	http://download.gna.org/wormux/%{name}-%{version}.tar.bz2
-# Source0-md5:	e49621b9b4ac7c8d1b11657989df61db
-Patch0:		%{name}-desktop.patch
+Source0:	http://download.gna.org/warmux/%{name}-%{version}.tar.bz2
+# Source0-md5:	ecf98ff1a91899d35d0ba8266ace9787
+Patch0:		desktop.patch
+Patch1:		optflags.patch
 URL:		http://www.wormux.org/
 BuildRequires:	SDL-devel >= 1.2.6
 BuildRequires:	SDL_gfx-devel >= 2.0.13
@@ -25,7 +26,8 @@ BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.1
-Suggests:	wormux-bonusmaps
+Suggests:	warmux-bonusmaps
+Obsoletes:	wormux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,9 +42,10 @@ Wolnodostępny klon gry Worms z Team17.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
-# disable building unsupported locale
-%{__sed} -i -e 's|cpf||g' po/LINGUAS
+# disable building unsupported locales
+%{__sed} -i -e 's|cpf||g;s|ua||g' po/LINGUAS
 
 # fix jp locale
 %{__sed} -i -e 's/ja_JP/ja/g' po/LINGUAS
@@ -53,6 +56,7 @@ mv -f po/ja{_JP,}.po
 %{__autoconf}
 %{__automake}
 %configure \
+	OPTFLAGS="%{rpmcxxflags}" \
 	--with-datadir-name=%{_datadir}/games/%{name}
 %{__make}
 
@@ -73,9 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/wormux
-%attr(755,root,root) %{_bindir}/wormux-list-games
+%attr(755,root,root) %{_bindir}/warmux
+%attr(755,root,root) %{_bindir}/warmux-list-games
 %{_datadir}/games/%{name}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.png
-%{_mandir}/man6/wormux.6*
+%{_mandir}/man6/warmux.6*
