@@ -10,7 +10,7 @@ Source0:	http://download.gna.org/warmux/%{name}-%{version}.tar.bz2
 # Source0-md5:	ecf98ff1a91899d35d0ba8266ace9787
 Patch0:		desktop.patch
 Patch1:		optflags.patch
-URL:		http://www.wormux.org/
+URL:		http://www.warmux.org/
 BuildRequires:	SDL-devel >= 1.2.6
 BuildRequires:	SDL_gfx-devel >= 2.0.13
 BuildRequires:	SDL_image-devel
