@@ -2,12 +2,12 @@ Summary:	A free (libre) clone of Worms from Team17
 Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		warmux
-Version:	11.04
+Version:	11.04.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/warmux/%{name}-%{version}.tar.bz2
-# Source0-md5:	668cd4c22afde352c566454e65fc4144
+# Source0-md5:	26ff65c43a9bb61a3f0529c98b943e35
 Patch0:		desktop.patch
 Patch1:		optflags.patch
 URL:		http://www.warmux.org/
@@ -40,7 +40,7 @@ Ein kostenloser Team17 Worms-Klon.
 Wolnodostępny klon gry Worms z Team17.
 
 %prep
-%setup -q
+%setup -q -n %{name}-11.04
 %patch0 -p1
 %patch1 -p1
 
