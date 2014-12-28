@@ -22,7 +22,7 @@ BuildRequires:	SDL_ttf-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel >= 7.16.4-2
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libpng-devel
 BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
