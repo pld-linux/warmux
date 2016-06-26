@@ -3,7 +3,7 @@ Summary(de.UTF-8):	Ein kostenloser Team17 Worms-Klon
 Summary(pl.UTF-8):	Wolnodostępny klon Worms z Team17
 Name:		warmux
 Version:	11.04.1
-Release:	7
+Release:	8
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://download.gna.org/warmux/%{name}-%{version}.tar.bz2
@@ -28,6 +28,7 @@ BuildRequires:	libxml++-devel >= 2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.1
+Requires:	%{name}-data = %{version}-%{release}
 Suggests:	warmux-bonusmaps
 Obsoletes:	wormux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,6 +41,16 @@ Ein kostenloser Team17 Worms-Klon.
 
 %description -l pl.UTF-8
 Wolnodostępny klon gry Worms z Team17.
+
+%package data
+Summary:	warmux data files
+Group:		Applications/Games
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description data
+warmux data files
 
 %prep
 %setup -q -n %{name}-11.04
@@ -83,7 +94,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/warmux
 %attr(755,root,root) %{_bindir}/warmux-list-games
-%{_datadir}/games/%{name}
+%{_mandir}/man6/warmux.6*
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.png
-%{_mandir}/man6/warmux.6*
+
+%files data
+%defattr(644,root,root,755)
+%{_datadir}/games/%{name}
