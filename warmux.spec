@@ -46,9 +46,7 @@ Wolnodostępny klon gry Worms z Team17.
 %package data
 Summary:	warmux data files
 Group:		Applications/Games
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description data
 warmux data files
