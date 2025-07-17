@@ -1,6 +1,7 @@
---- warmux-11.01/configure.ac~	2011-01-21 15:41:40.000000000 +0100
-+++ warmux-11.01/configure.ac	2011-02-15 11:45:45.097470453 +0100
-@@ -357,6 +357,9 @@
+diff -urNp -x '*.orig' warmux-11.04.org/configure.ac warmux-11.04/configure.ac
+--- warmux-11.04.org/configure.ac	2011-04-28 21:04:39.000000000 +0200
++++ warmux-11.04/configure.ac	2025-07-17 19:14:10.552476432 +0200
+@@ -373,6 +373,9 @@ fi
  dnl === Forbid exceptions (Android platform requirement) ===================
  CXXFLAGS="$CXXFLAGS -fno-exceptions"
  
@@ -8,5 +9,5 @@
 +CXXFLAGS="$CXXFLAGS $OPTFLAGS"
 +
  dnl ========================================================================
- dnl == Check for header files                                              =
+ dnl === Check for header files                                           ===
  dnl ========================================================================

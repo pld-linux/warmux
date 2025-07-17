@@ -1,5 +1,6 @@
---- warmux-11.01/data/warmux.desktop~	2011-01-20 18:12:15.000000000 +0100
-+++ warmux-11.01/data/warmux.desktop	2011-02-15 11:38:42.795203149 +0100
+diff -urNp -x '*.orig' warmux-11.04.org/data/warmux.desktop warmux-11.04/data/warmux.desktop
+--- warmux-11.04.org/data/warmux.desktop	2011-04-28 21:04:38.000000000 +0200
++++ warmux-11.04/data/warmux.desktop	2025-07-17 19:12:52.519542146 +0200
 @@ -1,9 +1,8 @@
  [Desktop Entry]
 -Version=1.0
@@ -11,7 +12,7 @@
  Exec=warmux
  Terminal=false
  StartupNotify=false
-@@ -12,9 +11,9 @@
+@@ -12,9 +11,9 @@ GenericName[pl]=Gra zręcznościowa
  Comment=A 2D game where funny characters launch funny weapons
  Comment[de]=Ein 2D Spiel mit lustigen Figuren und Waffen
  Comment[es]=Un juego en 2D donde extraños personajes se destripan con alegría
@@ -21,5 +22,5 @@
 -Comment[pl]=Gra 2D, w której zabawne postacie używają zabawnego uzbojenia
 +Comment[pl]=Gra 2D, w której zabawne postacie używają zabawnego uzbrojenia
  Comment[ro]=Un joc în 2D în care personaje amuzante lansează arme amuzante
+ Comment[tr]=Sevimli karakterlerin sevimli silahlar kullandığı 2B bir oyun
  Categories=Game;ArcadeGame;
- GenericName[fr_FR]=Arcade Game

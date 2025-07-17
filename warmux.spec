@@ -67,7 +67,8 @@ warmux data files
 mv -f po/ja{_JP,}.po
 
 %build
-%{__aclocal} -I build/m4
+%{__autopoint}
+%{__aclocal} -I m4 -I build/m4
 %{__autoconf}
 %{__automake}
 %configure \
